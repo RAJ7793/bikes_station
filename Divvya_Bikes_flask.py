@@ -7,24 +7,22 @@ import requests
 app = Flask(__name__)
 
 ###     In this function get data from divyabikes station_url and bike_url, 
-#       Store in a variable and get total_active_stations, total_bikes_avl, 
-#       total_reserved_bikes and store it on a dict and displayed in local  web server  
+#       Store that data in a variable and get total_active_stations, total_bikes_avl, 
+#       total_reserved_bikes and store it on a dictionary and host to localhost  
 
 @app.route("/")
 def main():
     try:
         data = {}
-        # Divvya bikes station_status jsondata url
+        # station_status jsondata url
         station_url = "https://gbfs.divvybikes.com/gbfs/en/station_status.json"
         # Divvya bikes jsondata url
         free_bike_url = "https://gbfs.divvybikes.com/gbfs/en/free_bike_status.json"
         # Use header for Json application
         headers = { 'Accept':'application/json','Content-Type': 'application/x-www-form-urlencoded' }
         
-        #Send GET requests to Station_status web address and recive proper response
+        #Send GET requests to web link and recive response
         station_response= requests.get(station_url, headers)
-
-        # Send GET requests to free_bike_status web adress and recive response
         free_bike_response = requests.get(free_bike_url, headers)
 
         # Print response code if recive 200 means no error
